@@ -1,6 +1,86 @@
-.logo
-{
-    background-color: rgb(108, 202, 214);
+h1{
+    padding: 5px 0px;
+    color: #388087;
+    margin:  0px 0px 0px 0px ;
+}
+
+body{
+    background-color: #f6f6f2;
+}
+
+li {
+    margin: 10px;
+    text-align: center;
+    list-style: none;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;;
+    padding: 10px;
+    display: inline-block;
+    margin-bottom: 50px;
+    max-width: 700px;
+}
+
+ul{
+    padding-left: 0px;
+}
+
+.follow {
+    font-size: 13px;
+    float: right;
+    background-color: #badfe7;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.profile {
+    height: 60px;
+    width: 200px;
+}
+
+.name {
+    font-size: large;
+}
+
+footer {
+    border-radius: 10px;
+    border-top: solid;
+    background-color: #388087;
+    padding: 15px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.manu {
     color: white;
-    padding: 1px;
+    text-decoration: none;
+   padding: 5px;
+}
+
+.like {
+    font-size: 13px;
+    background-color: #badfe7;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 0px 10px;
+}
+
+.singlepost {
+    text-decoration: none;
+    color: black;
+}
+
+.singlediv{
+    margin: 10px;
+    text-align: center;
+    list-style: none;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;;
+    padding: 10px;
+    display: inline-block;
+    margin-bottom: 50px;
+    max-width: 700px;
 }

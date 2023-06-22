@@ -8,7 +8,7 @@ const DataContextProvider = ({children}) => {
 
   const fetchData = async() => {
     try{
-      const {data: {posts}} = await  axios.get("http://localhost:3000/api/posts")
+      const {data: {posts}} = await  axios.get("api/posts")
       setPostsData(posts)
     }
     catch(e){console.log(e)}
