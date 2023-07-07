@@ -52,6 +52,7 @@ function GetAllUserPost() {
         <Link className='manu'>post</Link>
         <Link className='manu'>bookmark</Link>
         <Link className='manu'>profile</Link>
+        <p>hello</p>
     </footer>
     </div>
   )
