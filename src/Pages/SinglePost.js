@@ -29,7 +29,7 @@ export const SinglePost = () => {
     {SinglepostsData?.content}
     <br></br>
     <button className='like'>like</button>
-    <button className='like'>comment</button>
+    <button className='like'>bookmark</button>
     <button className='like'>unlike</button>
     <footer>
         <Link to={"/"} className='manu'>Explore</Link>

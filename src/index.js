@@ -7,6 +7,7 @@ import { makeServer } from "./server";
 import DataContextProvider from './context/DataContextProvider';
 import {BrowserRouter as Router} from "react-router-dom"
 import AuthContextProvider from './context/AuthContext';
+import { BookContextProvider } from './context/BookmarkContextProvider';
 
 // Call make Server
 makeServer();
@@ -17,7 +18,9 @@ root.render(
     <Router>
     <DataContextProvider>
       <AuthContextProvider>
+        <BookContextProvider>
       <App />
+      </BookContextProvider>
       </AuthContextProvider>
     </DataContextProvider>
     </Router>

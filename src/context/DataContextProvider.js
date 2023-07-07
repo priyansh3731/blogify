@@ -17,7 +17,7 @@ const DataContextProvider = ({children}) => {
     fetchData()
   },[])
   return (
-    <DataContext.Provider value={{postsData}}>{children}</DataContext.Provider>
+    <DataContext.Provider value={{postsData ,setPostsData}}>{children}</DataContext.Provider>
   )
 }
 

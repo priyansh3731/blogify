@@ -168,6 +168,7 @@ export const bookmarkPostHandler = function (schema, request) {
 
 export const removePostFromBookmarkHandler = function (schema, request) {
   const { postId } = request.params;
+  console.log(postId)
   let user = requiresAuth.call(this, request);
   try {
     if (!user) {

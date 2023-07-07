@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { AuthContext } from '../context/AuthContext';
 import { Link, useNavigate } from 'react-router-dom';
+import "./signup.css";
 
 function SignInSignUp() {
 
@@ -27,11 +28,11 @@ function SignInSignUp() {
         <form onSubmit={SignHandler}>
             <h2>sign in</h2>
             <label>
-                username
+                <span className='userbox'>username</span>
                 <input type='text' required></input>
             </label>
             <label>
-                password
+                <span>password</span>
                 <input type='password' required></input>
             </label>
             <button type="submit">Sign in</button>

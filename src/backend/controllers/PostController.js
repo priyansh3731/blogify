@@ -43,8 +43,10 @@ export const getPostHandler = function (schema, request) {
 
 export const getAllUserPostsHandler = function (schema, request) {
   const { username } = request.params;
+  console.log(username)
   try {
     const posts = schema.posts.where({ username })?.models;
+    console.log(posts)
     return new Response(200, {}, { posts });
   } catch (error) {
     return new Response(
@@ -123,7 +125,9 @@ export const editPostHandler = function (schema, request) {
       );
     }
     const postId = request.params.postId;
+    console.log(postId,"id")
     const { postData } = JSON.parse(request.requestBody);
+    console.log(postData,"postdata")
     let post = schema.posts.findBy({ _id: postId }).attrs;
     if (post.username !== user.username) {
       return new Response(
@@ -155,6 +159,7 @@ export const editPostHandler = function (schema, request) {
 
 export const likePostHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
+  console.log(user)
   try {
     if (!user) {
       return new Response(
@@ -254,6 +259,7 @@ export const dislikePostHandler = function (schema, request) {
  * */
 export const deletePostHandler = function (schema, request) {
   const user = requiresAuth.call(this, request);
+  console.log(user)
   try {
     if (!user) {
       return new Response(
@@ -268,6 +274,7 @@ export const deletePostHandler = function (schema, request) {
     }
     const postId = request.params.postId;
     let post = schema.posts.findBy({ _id: postId }).attrs;
+    console.log(post)
     if (post.username !== user.username) {
       return new Response(
         400,
