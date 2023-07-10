@@ -25,34 +25,32 @@ function GetAllUserPost() {
   return (
     <div>
     <header>
-        <h1>blogify</h1>
+    <Link style={{textDecoration:'none'}} to={"/"}><h1>blogify</h1></Link>
       </header>
-      <h2>{user?.username}</h2>
-      <p>{user?.bio}</p>
+      <h2>{userpost?.username}</h2>
+      <p>{userpost?.bio}</p>
     <ul>
         {
-            userpost.map(({_id,content,username,createAt})=>
+            userpost.map(({_id,content,username,createAt,likes})=>
                 <li key={_id}>
                  <div className='profile'>
-                  <span className='name'><Link to={`/posts/user/${username}`}>{username}</Link>{createAt}</span>
-                  <button className='follow'>follow</button>
+                  <span className='name'><div className='circle'></div><Link className='username' to={`/posts/user/${username}`}>{username}</Link>{createAt}</span>
                   </div>
                   <Link className='singlepost' to={`/posts/${_id}`}>{content}</Link>
                   <br></br>
-                  <button className='like'>like</button>
+                  <button className='like'>{likes.likeCount}</button>
                   <button className='like'>bookmark</button>
                   <button className='like'>unlike</button>
                   </li>
             )
         }
     </ul>
-    <Link to={"/createpost"}><button className='create'>create</button></Link>
+    <Link to={"/createpost"}><button className='create'>+</button></Link>
     <footer>
-        <Link to={"/"} className='manu'>Explore</Link>
-        <Link className='manu'>post</Link>
-        <Link className='manu'>bookmark</Link>
+    <Link to={"/"} className='manu'>Explore</Link>
+        <Link to={"/createpost"} className='manu'>post</Link>
+        <Link to={"/users/bookmark"} className='manu'>bookmark</Link>
         <Link className='manu'>profile</Link>
-        <p>hello</p>
     </footer>
     </div>
   )

@@ -14,7 +14,8 @@ export const users = [
     password: "adarshbalika123",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    bio : "hii my name is adarsh balika"
+    bio : "hii my name is adarsh balika",
+    bookmarks:[]
   },
   {
     _id: uuid(),
@@ -24,6 +25,7 @@ export const users = [
     password: "pawan1234",
     createdAt: formatDate(),
     updatedAt: formatDate(),
-    bio : "hii my name is pawan"
+    bio : "hii my name is pawan",
+    bookmarks:[]
   },
 ];

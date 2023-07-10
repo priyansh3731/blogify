@@ -22,9 +22,12 @@ export const SinglePost = () => {
 
   
   return (
+    <div>
+      <header>
+      <Link style={{textDecoration:'none'}} to={"/"}><h1>blogify</h1></Link>
+      </header>
     <div key={SinglepostsData?._id} className='singlediv'><div className='profile'>
     <span className='name'>{SinglepostsData?.username}{SinglepostsData?.createAt}</span>
-    <button className='follow'>follow</button>
     </div>
     {SinglepostsData?.content}
     <br></br>
@@ -39,6 +42,7 @@ export const SinglePost = () => {
         <Link className='manu'>bookmark</Link>
         <Link className='manu'>profile</Link>
     </footer>
+    </div>
     </div>
   )
 }

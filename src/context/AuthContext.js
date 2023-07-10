@@ -20,12 +20,13 @@ const AuthContextProvider = ({children}) =>{
         }
     };
 
-    const SignUp = async(username , password)=>{
+    const SignUp = async(username , password , bio)=>{
       try {
-        const res = await axios.post("api/auth/signup", { username, password });
-      const { encodedToken, foundUser } = res.data;
+        const res = await axios.post("api/auth/signup", { username, password ,bio});
+        console.log(res)
+      const { encodedToken, createdUser} = res.data;
       localStorage.setItem("token", encodedToken);
-      setUser(foundUser);
+      setUser(createdUser);
       setLoggedIn(true);
       } catch (error) {
         console.log(error)

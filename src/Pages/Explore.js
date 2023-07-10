@@ -5,7 +5,7 @@ import "./Explore.css"
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { BookmarkContext } from '../context/BookmarkContextProvider';
-import Popup, { papup } from "reactjs-popup";
+import Popup from "reactjs-popup";
 
 function Explore() {
     const {postsData , setPostsData} = useContext(DataContext);
@@ -13,27 +13,29 @@ function Explore() {
     const navigate = useNavigate();
     const [allusers , setAllusers] = useState([])
     const {setBookmarkpost} = useContext(BookmarkContext)
-    const {bookmarkbutton , setbookmarkbutton} = useContext(BookmarkContext)
 
     if(loggedIn === false){
       navigate("/signin")
     }
 
-    const changeHandler=async(event,_id)=>{
+    const changeHandler1=async(event,_id)=>{
       try {
-        if(event.target.value === "delete"){
         const res = await axios.delete(`api/posts/${_id}`,{headers:{authorization:localStorage.getItem("token")}}) 
         setPostsData(res.data.posts)
-        }
-
-        if(event.target.value === "edit"){
-          console.log(event.target.value)
-          const res = await axios.post(`api/posts/edit/${_id}`,{headers:{authorization:localStorage.getItem("token")}}) 
-          setPostsData(res.data.posts)
-          }
-      } catch (error) {
+        } catch (error) {
         console.log(error)
       }
+    }
+
+    const changeHandler2=async(event,_id)=>{
+      try{
+        event.preventDefault();
+        console.log(event.target[0].value)
+        const res = await axios.post(`api/posts/edit/${_id}`,{postData:{content : event.target[0].value}},{headers:{authorization:localStorage.getItem("token")}}) 
+        setPostsData(res.data.posts)
+        } catch (error) {
+      console.log(error)
+    }
     }
 
     const onclickHandler1=async(event,_id)=>{
@@ -69,6 +71,7 @@ function Explore() {
       try {
           const res = await axios.post(`api/users/bookmark/${id}/`,{},{headers:{authorization:localStorage.getItem("token")}})
         setBookmarkpost(res.data.bookmarks)
+        
       } catch (error) {
         console.log(error)
       }
@@ -90,28 +93,31 @@ function Explore() {
   return (
     <div>
       <header>
-        <h1>blogify</h1>
+        <Link style={{textDecoration:'none'}} to={"/"}><h1>blogify</h1></Link>
       </header>
-      {
+      <aside className='allusers'>
+        <h1 className='suggetions'>suggetions</h1>
+        {
         allusers.map(({username,_id})=>{
           return(
-            <div>{username}<button onClick={(event)=>{followbuttonHandler(event,_id)}} className='follow'>follow</button></div>
+          <div className='suggetionuser'>{username}<button onClick={(event)=>{followbuttonHandler(event,_id)}} className='follow'>follow</button></div>
           )
         })
-      }
+      }</aside>
+
     <ul>
+    
         {
             postsData.map(({_id,content,username,createAt,likes})=>
                 <li key={_id}>
                  <div className='profile'>
-                  <span className='name'><Link to={`/posts/user/${username}`}>{username}</Link>{createAt}</span>
-                  <select onChange={(event)=>changeHandler(event,_id)}>
-                    <option></option>
-                    <option>delete</option>
-                    <Popup trigger={<option>edit</option>}><input></input><button>post</button></Popup>
-                  </select>
-                  </div>
-                 
+                  <span className='name'><div className='circle'></div><Link className='username' to={`/posts/user/${username}`}>{username}</Link>{createAt}</span>
+                  {/* <select className='selection' onChange={(event)=>changeHandler(event,_id)}> */}
+                    <Popup trigger={<p className='selection'>...</p>}><button className='like' onClick={(event)=>{changeHandler1(event,_id)}}>delete</button><br /><Popup trigger={<button className='like'>edit</button>}><form onSubmit={(event)=>{changeHandler2(event,_id)}}>
+        <input placeholder='write somthing'  type='text'></input>
+        <button className='postbutton' type='submit'>post</button>
+    </form></Popup></Popup>
+                 </div>
                   <Link className='singlepost' to={`/posts/${_id}`}>{content}</Link>
                   <br></br>
                   <button className='like' onClick={(event)=>onclickHandler1(event,_id)}>{likes.likeCount}</button>
@@ -121,12 +127,12 @@ function Explore() {
             )
         }
     </ul>
-    <Link to={"/createpost"}><button className='create'>create</button></Link>
+    <Link to={"/createpost"}><button className='create'>+</button></Link>
     <footer>
         <Link className='manu'>Explore</Link>
         <Link to={"/createpost"} className='manu'>post</Link>
         <Link to={"/users/bookmark"} className='manu'>bookmark</Link>
-        <Link to={`/posts/user/adarshbalika`} className='manu'>profile</Link>
+        <Link to={`/profile`} className='manu'>profile</Link>
     </footer>
     </div>
   )

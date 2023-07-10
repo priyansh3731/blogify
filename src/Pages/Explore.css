@@ -2,6 +2,7 @@ h1{
     padding: 5px 0px;
     color: #388087;
     margin: 0 auto;
+    text-decoration: none;
 }
 
 body{
@@ -20,10 +21,6 @@ li {
     width: 700px;
 }
 
-ul{
-    padding-left: 0px;
-}
-
 .follow {
     font-size: 13px;
     background-color: #badfe7;
@@ -33,13 +30,28 @@ ul{
 
 .profile {
     height: 60px;
-    width: 200px;
+    width: 700px;
+    display: inline-block;
 }
 
 .name {
     font-size: large;
+    float: left;
 }
 
+.username{
+    text-decoration: none;
+    color: #388087;
+}
+
+.circle{
+    float: left;
+    width: 30px;
+    height: 30px;
+    background-color: #badfe7;
+    border-radius: 50%;
+    margin-right: 10px;
+}
 
 footer {
     border-radius: 10px;
@@ -88,8 +100,41 @@ footer {
 .create {
     position: fixed;
     right: 0;
-    left: 80%;
+    left: 90%;
     bottom: 100px;
-    width: 50px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
     background-color: #badfe7;
+    font-size: 30px;
+}
+
+
+.allusers{
+    float: left;
+    height: 1600px;
+}
+
+.selection{
+    margin-top: 10px;
+    float: right;
+    font-size: large;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.suggetions{
+    margin-bottom: 20px;
+}
+
+.suggetionuser{
+    padding: 5px;
+}
+
+.postbutton{
+    font-size: 13px;
+    background-color: #badfe7;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin: 20px;
 }

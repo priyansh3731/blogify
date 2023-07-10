@@ -2,7 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useContext } from 'react';
 import { DataContext } from '../context/DataContextProvider';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Createpost() {
     const navigate = useNavigate();
@@ -15,10 +15,21 @@ function Createpost() {
         navigate('/')
     }
   return (
+    <div>
+      <header>
+      <Link style={{textDecoration:'none'}} to={"/"}><h1>blogify</h1></Link>
+      </header>
     <form onSubmit={submitHandler}>
-        <input type='text'></input>
-        <button type='submit'>post</button>
+        <input placeholder='write somthing'  type='text'></input>
+        <button className='postbutton' type='submit'>post</button>
     </form>
+    <footer>
+    <Link to={"/"} className='manu'>Explore</Link>
+        <Link className='manu'>post</Link>
+        <Link to={"/users/bookmark"} className='manu'>bookmark</Link>
+        <Link className='manu'>profile</Link>
+    </footer>
+    </div>
   )
 }
 

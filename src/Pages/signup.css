@@ -1,9 +1,12 @@
 form{
-    max-width: 200px;
+    max-width: 180px;
     max-height: 900px;
     margin: 50px auto;
 }
 
-.userbox{
-    padding: 20px;
+.sign{
+    
+    height: 700px;
+    margin: auto;
+    background-image: url("https://img.freepik.com/free-vector/gradient-minimalist-background_23-2149974334.jpg?size=626&ext=jpg&ga=GA1.2.66058140.1687587179&semt=ais");
 }
